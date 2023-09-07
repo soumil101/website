@@ -6,12 +6,17 @@ from streamlit_extras.stylable_container import stylable_container
 from pathlib import Path
 from PIL import Image
 
+import os
+
 # paths
 current_dir = Path(__file__).parent
 css_file = current_dir / "styles" / "styles.css"
 resume_file = current_dir / "assets" / "resume.pdf"
-profile_pic = current_dir / "assets" / "profile-pic.png"
+
+profile_pic = current_dir / "assets" / "profile-pic-13.png"
 professional_pic = current_dir / "assets" / "Professional_Photo.JPG"
+
+photo_cats = ["landscapes", "miscellaneous", "bumi"]
 
 # general settings
 PAGE_TITLE = "Soumil Gad"
@@ -31,7 +36,7 @@ with open(resume_file, "rb") as pdf_file:
 profile_pic = Image.open(profile_pic)
 professional_pic = Image.open(professional_pic)
 
-st.markdown("<center><h1>Welcome!</h1></center>", unsafe_allow_html=True)
+st.markdown("<center><h1>Welcome to my website!</h1></center>", unsafe_allow_html=True)
 
 selected = som.option_menu(
     menu_title=None,
@@ -43,7 +48,7 @@ selected = som.option_menu(
         "container": {"padding": "0px", "margin": "0px", "background-color": "transparent"},
         "icon": {"color": "gold", "font-size": "25px", "display": "block", "margin-bottom": "0px"},
         "nav-link": {"font-size": "20px", "text-align": "center", "margin":"0px", "--hover-color": "#586e75", "display": "block"},
-        "nav-link-selected": {"background-color": "#d33682"},
+        "nav-link-selected": {"background-color": "transparent"},
     }
 )
 
@@ -52,7 +57,7 @@ if selected == "Home":
     with col1:
         spacer, actual = st.columns(2)
         with actual:
-            st.image(professional_pic, width=230)
+            st.image(profile_pic, use_column_width=True)
 
     with col2:
         st.title(NAME)
@@ -117,5 +122,123 @@ if selected == "Projects":
     st.write('Work in Progress!')
 
 if selected == "Photography":
-    st.title(f"{selected}")
-    st.write('Work in Progress!')
+    st.markdown("<center><h4>My Photo Gallery!</h4></center>", unsafe_allow_html=True)
+    st.markdown("<left><p>One of the things I enjoy in my free time is photography. Although I love photography, I enjoy the editing aspect more! This is why I haven't actually upgrade from shooting on my phone yet. All photos captured on iPhone 13 Pro. Edited on Lightroom / Photomator.</p></left>", unsafe_allow_html=True)
+    selected = som.option_menu(
+        menu_title=None,
+        options=["Landscapes", "Miscellaneous", "Bumi"],
+        icons=["mountain", "random", "dog"],
+        default_index=0,
+        orientation="horizontal",
+        styles={
+            "container": {"padding": "0px", "margin": "0px", "background-color": "transparent"},
+            "nav-link": {"font-size": "20px", "text-align": "center", "margin":"0px", "--hover-color": "#586e75", "display": "block"},
+            "nav-link-selected": {"color": "gray", "background-color": "#F5EFC4"},
+        }
+    )
+
+    # selected = st.selectbox(
+    #     label="Select a category",
+    #     options=["Landscapes", "Miscellaneous", "Bumi"],
+    #     index=0,
+    #     help="Choose a category to display",
+    # )
+
+    if selected == "Landscapes":
+        '''If you can't tell, I really love shooting the sky'''
+        path = f"pictures/{selected.lower()}"
+        photo_number = 0
+        photos = []
+        # write a for loop to iterate through all the photoes in the folder pictures and assign them a variable photo_number
+        for filename in os.listdir(path):
+            if filename.endswith(".jpg") or filename.endswith(".png"):
+                photo_number += 1
+                photo = Image.open(os.path.join(path, filename))
+                photos.append(photo)
+        # create a column layout with 3 columns
+        col1, col2, col3 = st.columns(3)
+        # iterate through the photos list and display each photo in a column
+        for i in range(photo_number):
+            if i % 3 == 0:
+                with col1:
+                    st.image(photos[i], use_column_width=True)
+            elif i % 3 == 1:
+                with col2:
+                    st.image(photos[i], use_column_width=True)
+            else:
+                with col3:
+                    st.image(photos[i], use_column_width=True)
+
+    if selected == "Miscellaneous":
+        st.markdown("<center><p>Couldn't really classify these</p></center>", unsafe_allow_html=True)
+        path = f"pictures/{selected.lower()}"
+        photo_number = 0
+        photos = []
+        # write a for loop to iterate through all the photoes in the folder pictures and assign them a variable photo_number
+        for filename in os.listdir(path):
+            if filename.endswith(".jpg") or filename.endswith(".png"):
+                photo_number += 1
+                photo = Image.open(os.path.join(path, filename))
+                photos.append(photo)
+        # create a column layout with 3 columns
+        col1, col2, col3 = st.columns(3)
+        # iterate through the photos list and display each photo in a column
+        for i in range(photo_number):
+            if i % 3 == 0:
+                with col1:
+                    st.image(photos[i], use_column_width=True)
+            elif i % 3 == 1:
+                with col2:
+                    st.image(photos[i], use_column_width=True)
+            else:
+                with col3:
+                    st.image(photos[i], use_column_width=True)
+
+    if selected == "Bumi":
+        st.markdown("<p style='text-align: right;'>My brother's dog, Bumi, is the best model</p>", unsafe_allow_html=True)
+        path = f"pictures/{selected.lower()}"
+        photo_number = 0
+        photos = []
+        # write a for loop to iterate through all the photoes in the folder pictures and assign them a variable photo_number
+        for filename in os.listdir(path):
+            if filename.endswith(".jpg") or filename.endswith(".png"):
+                photo_number += 1
+                photo = Image.open(os.path.join(path, filename))
+                photos.append(photo)
+        # create a column layout with 3 columns
+        col1, col2, col3 = st.columns(3)
+        # iterate through the photos list and display each photo in a column
+        for i in range(photo_number):
+            if i % 3 == 0:
+                with col1:
+                    st.image(photos[i], use_column_width=True)
+            elif i % 3 == 1:
+                with col2:
+                    st.image(photos[i], use_column_width=True)
+            else:
+                with col3:
+                    st.image(photos[i], use_column_width=True)
+
+    # if selected:
+    #     path = f"pictures/{selected.lower()}"
+    #     photo_number = 0
+    #     photos = []
+    #     # write a for loop to iterate through all the photoes in the folder pictures and assign them a variable photo_number
+    #     for filename in os.listdir(path):
+    #         if filename.endswith(".jpg") or filename.endswith(".png"):
+    #             photo_number += 1
+    #             photo = Image.open(os.path.join(path, filename))
+    #             photos.append(photo)
+    #     # create a column layout with 3 columns
+    #     col1, col2, col3 = st.columns(3)
+    #     # iterate through the photos list and display each photo in a column
+    #     for i in range(photo_number):
+    #         if i % 3 == 0:
+    #             with col1:
+    #                 st.image(photos[i], use_column_width=True)
+    #         elif i % 3 == 1:
+    #             with col2:
+    #                 st.image(photos[i], use_column_width=True)
+    #         else:
+    #             with col3:
+    #                 st.image(photos[i], use_column_width=True)
