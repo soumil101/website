@@ -4,6 +4,7 @@ from streamlit_extras.let_it_rain import rain
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_carousel import carousel
 from streamlit.components.v1 import html
+from streamlit.components.v1 import iframe
 
 from pathlib import Path
 from PIL import Image
@@ -238,40 +239,51 @@ if selected == "Projects":
             mime="application/octet-stream",
             use_container_width=True
         )        
-
-
         
         st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/Infusion_Center_Analysis',), use_container_width=True, key="3")
 
     # project 4
-    with st.expander("Project 4"):
+    with st.expander("Poemy - Utilizing langchain and GPT-3.5 to create beautiful poems and haikus."):
         st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'> </p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Fine tuned for illustrious poetry, Poemy harnesses the power of GPT-3.5 to generate poems and haikus on any topic. By utilizing chain of thought reasoning, Poemy develops poems based on research from the web, and the haikus that Poemy creates utilize the prior web and poem generation. Check out Poemy on the website below. Or use the embedded app!</p>", unsafe_allow_html=True)
         
         st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Pandas, Scikit-Learn, Matplotlib, Numpy, Jupyter Notebook</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, OpenAI, Langchain, Streamlit</p>", unsafe_allow_html=True)
 
-        wc_photo1 = Image.open(project_screenshots / "worldcup" / "wcpredictor1.png")
-        st.image(wc_photo1, width=600, caption="An example of the monte carlo sim being run on a fixture")
+        iframe("https://mypoemy.streamlit.app/?embed=true", height=390, scrolling=True)
 
         st.write('')
-        
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/AggieSportsAnalytics/WorldCupPredictor',), use_container_width=True, key="4")
+
+        st.button('Check out Poemy on the Website!', on_click=open_page, args=('https://mypoemy.streamlit.app/',), use_container_width=True, key="7")
+        st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/poemy',), use_container_width=True, key="4")
 
     # project 5
-    with st.expander("Project 5"):
+    with st.expander("Wikipedia Speedrun - A community website where users can compete the Wikipedia Speedrun game with themselves and with others."):
         st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'> </p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Wikipeia Speedrun is a game that challenges players to navigate from one Wikipedia Page to another in as little time as possible, while only traversing through the site using the links from one Wikipedia page to another. I built a website that generates a random starting and ending Wikipedia page for the player to speedrun. Each Wikipedia page is webscraped through Selenium, and the contents within the article are summarzed and displayed to the user using ChatGPT. This model is fine tuned to generate the most useful summaries for the player in the context of Wikipedia Speedrun - pointing out key facts such as location and time period. Additionally, the site contains a leaderbaord (soon to be connected to Redis) where players can compete and post their best times for certain 'courses'. This leaderboard dynamically updates, allowing players to compete and view each others results in real time. Additionally, the columns in the leaderboard can be sorted, letting players easily access the stats they want to see. Future functionality of the app includes generating pages based on certain topics (such as celebrities or landmarks) and an in built timer. </p>", unsafe_allow_html=True)
         
         st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Pandas, Scikit-Learn, Matplotlib, Numpy, Jupyter Notebook</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, Python, Pandas, Selenium, Wikipedia API, OpenAI, Redis</p>", unsafe_allow_html=True)
 
-        wc_photo1 = Image.open(project_screenshots / "worldcup" / "wcpredictor1.png")
-        st.image(wc_photo1, width=600, caption="An example of the monte carlo sim being run on a fixture")
+
+        ws_photo1 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun1.png")
+        ws_photo2 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun2.png")
+        ws_photo3 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun3.png")
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.image(ws_photo1, width=600, caption="Homepage", use_column_width=True)
+        with col2:
+            st.image(ws_photo2, width=600, caption="Gameplay", use_column_width=True)
+        with col3:
+            st.image(ws_photo3, width=600, caption="Leaderboard", use_column_width=True)
+
+        # iframe("https://wikipedia-speedrun.onrender.com", height=600, scrolling=True)
 
         st.write('')
         
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/AggieSportsAnalytics/WorldCupPredictor',), use_container_width=True, key="5")
+        st.button('Check out Wikipedia Speedrun on the Website!', on_click=open_page, args=('https://mypoemy.streamlit.app/',), use_container_width=True, key="8")
+        st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/WikipediaSpeedrun',), use_container_width=True, key="5")
 
     # project 6
     with st.expander("CryptoCheck - A fullstack application complete with an interactive dashboard to track cryptocurrency prices/news and a feature-full bot that can trade for you using various market strategies."):
@@ -282,7 +294,7 @@ if selected == "Projects":
         st.markdown("<p style='font-size: 12px; color: darkgrey;'>A crypto trading bot that can be customized to trade based on many trading strategies, such as scalping, arbitrage, mean reversion, etc...</p>", unsafe_allow_html=True)
         
         st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, JavaScript, React, PostgreSQL, Python, Numpy, CoinbasePro API/Websocket, Binance API, Docker, Figma</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, JavaScript, React, PostgreSQL, Python, Numpy, Tensorflow, Scikit-learn, CoinbasePro API/Websocket, Binance API, Docker, Figma</p>", unsafe_allow_html=True)
 
         cc_main = Image.open(project_screenshots / "cryptocheck" / "CryptoCheck.png")
         cc_light = Image.open(project_screenshots / "cryptocheck" / "CryptoCheckLight.png")
