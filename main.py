@@ -26,8 +26,10 @@ resume_file = current_dir / "assets" / "resume.pdf"
 
 project_screenshots = current_dir / "assets" / "project_screenshots"
 
-profile_pic = current_dir / "assets" / "profile-pic-13.png"
-professional_pic = current_dir / "assets" / "Professional_Photo.JPG"
+profile_pic = current_dir / "assets" / "profile_photos" / "profile-pic-13.png"
+professional_pic = current_dir / "assets" / "profile_photos" / "Professional_Photo.JPG"
+
+github_logo = current_dir / "assets" / "github-mark" / "github-mark.png"
 
 photo_cats = ["landscapes", "miscellaneous", "bumi"]
 
@@ -36,15 +38,11 @@ PAGE_TITLE = "Soumil Gad"
 PAGE_ICON = "random"
 NAME = "Soumil Gad"
 DESCRIPTION = """
-Junior at UC Davis studying Computer Science. Passionate about data science, machine learning, and software engineering. Likes taking photos in free time.
+Junior at UC Davis studying Computer Science. Passionate about data science, artificial intelligence, and software engineering. Likes photography and photo editing.
 """
 EMAIL = "soumilgad03@gmail.com"
-PROJECTS = {
-    "FIFA 2022 World Cup Simulator - Using Machine Learning to predict the winner of the 2022 FIFA World Cup!": "https://youtu.be/Sb0A9i6d320",
-    "Penalty Kick Encroachment Tracker - Web app with NoSQL database": "https://youtu.be/3egaMfE9388",
-    "🏆 Desktop Application - Excel2CSV converter with user settings & menubar": "https://youtu.be/LzCfNanQ_9c",
-    "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
-}
+PHONE = "(408)-714-9646"
+LOCATION = "Cupertino, CA"
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON, layout="wide")
 
@@ -57,7 +55,7 @@ with open(resume_file, "rb") as pdf_file:
 profile_pic = Image.open(profile_pic)
 professional_pic = Image.open(professional_pic)
 
-st.markdown("<center><h1>Welcome to my website!</h1></center>", unsafe_allow_html=True)
+st.markdown(f"<center><h1 style='padding-top: -100px; margin-top: -100px;'>Welcome to my website!</h1></center>", unsafe_allow_html=True)
 
 selected = som.option_menu(
     menu_title=None,
@@ -90,14 +88,16 @@ if selected == "Home":
             mime="application/octet-stream",
         )
         st.write("📫", EMAIL)
-        st.write("📍", "Cupertino, CA")
+        st.write("📞", "<a href='tel:+14087149646'>(408)-714-9646</a>", unsafe_allow_html=True)
+        st.write("📍", "<a href='https://www.google.com/maps/search/?api=1&query=Cupertino, CA'>Cupertino, CA</a>", unsafe_allow_html=True)
 
     st.divider()
 
     st.markdown('''
-                <h3 align="center">Socials:</h3>
+                <h3 align="center" style='padding-top: -45px; margin-top: -45px;'>Platforms</h3>
                 <p align="center">
                 <a href="https://linkedin.com/in/soumil-gad" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="soumil-gad" height="30" width="40" /></a>
+                <a href="https://github.com/soumil101" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="soumil101" height="30" width="40" /></a>
                 <a href="https://stackoverflow.com/users/22341476" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="22341476" height="30" width="40" /></a>
                 <a href="https://kaggle.com/soumil101" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/kaggle.svg" alt="soumil101" height="30" width="40" /></a>
                 <a href="https://fb.com/soumilgad" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="soumilgad" height="30" width="40" /></a>
@@ -140,30 +140,10 @@ if selected == "Home":
 
 if selected == "Projects":
     st.markdown("<center><h4>Projects</h4></center>", unsafe_allow_html=True)
-    st.markdown("<center><p>Here are some of the projects I've worked on!</p></center>", unsafe_allow_html=True)
-
-    # test_items = [
-    #     dict(
-    #         title=None,
-    #         text=None,
-    #         interval=None,
-    #         img="https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=1380&t=st=1688825493~exp=1688826093~hmac=cb486d2646b48acbd5a49a32b02bda8330ad7f8a0d53880ce2da471a45ad08a4",
-    #     ),
-    #     dict(
-    #         title="Slide 2",
-    #         text="A wooden bridge in a forest in Autumn",
-    #         img="https://img.freepik.com/free-photo/beautiful-wooden-pathway-going-breathtaking-colorful-trees-forest_181624-5840.jpg?w=1380&t=st=1688825780~exp=1688826380~hmac=dbaa75d8743e501f20f0e820fa77f9e377ec5d558d06635bd3f1f08443bdb2c1",
-    #     ),
-    #     dict(
-    #         title="Slide 3",
-    #         text="A distant mountain chain preceded by a sea",
-    #         img="https://img.freepik.com/free-photo/aerial-beautiful-shot-seashore-with-hills-background-sunset_181624-24143.jpg?w=1380&t=st=1688825798~exp=1688826398~hmac=f623f88d5ece83600dac7e6af29a0230d06619f7305745db387481a4bb5874a0",
-    #     ),
-    # ]
-
-    # carousel(items=test_items, width=1)
-    
-        
+    st.markdown("<center><p style='font-size: 12px;'>I've been able to work on a variety of interesting projects thus far. Each project presented its own unqiue challenges and required me to learn new skills and technologoies. I've listed a few of them below! I'm proud of the work I've done on these projects and I'm always looking for new opportunities to apply my skills and knowledge to solve interesting problems!</p></center>", unsafe_allow_html=True)
+    st.markdown("<center><p style='font-size: 12px;'>Like aforementioned, I'm very passionate about the more abstract side of programming: like data science and machine learning. Recently, I've picked up a huge interest in generative AI, namely transformers and diffusers. As such, you'll find that a lot of my projects are geared towards these interests. </p></center>", unsafe_allow_html=True)
+    st.markdown("<center><p style='font-size: 12px;'>So please, check out some of my projects below. Click on any title to expand it and feel free to check out the demos, repositories, and play with some of them! </p></center>", unsafe_allow_html=True)
+                
     # project 1
     with st.expander("FIFA 2022 World Cup Simulator - Using Machine Learning to predict the winner of the 2022 FIFA World Cup."):
         st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
@@ -404,27 +384,3 @@ if selected == "Photography":
             else:
                 with col3:
                     st.image(photos[i], use_column_width=True)
-
-    # if selected:
-    #     path = f"pictures/{selected.lower()}"
-    #     photo_number = 0
-    #     photos = []
-    #     # write a for loop to iterate through all the photoes in the folder pictures and assign them a variable photo_number
-    #     for filename in os.listdir(path):
-    #         if filename.endswith(".jpg") or filename.endswith(".png"):
-    #             photo_number += 1
-    #             photo = Image.open(os.path.join(path, filename))
-    #             photos.append(photo)
-    #     # create a column layout with 3 columns
-    #     col1, col2, col3 = st.columns(3)
-    #     # iterate through the photos list and display each photo in a column
-    #     for i in range(photo_number):
-    #         if i % 3 == 0:
-    #             with col1:
-    #                 st.image(photos[i], use_column_width=True)
-    #         elif i % 3 == 1:
-    #             with col2:
-    #                 st.image(photos[i], use_column_width=True)
-    #         else:
-    #             with col3:
-    #                 st.image(photos[i], use_column_width=True)
