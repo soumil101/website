@@ -290,7 +290,7 @@ if selected == "Projects":
 
 if selected == "Photography":
     st.markdown("<center><h4>My Photo Gallery!</h4></center>", unsafe_allow_html=True)
-    st.markdown("<left><p>One of the things I enjoy in my free time is photography. Although I love photography, I enjoy the editing aspect more! This is why I haven't actually upgrade from shooting on my phone yet. All photos captured on iPhone 13 Pro. Edited on Lightroom / Photomator.</p></left>", unsafe_allow_html=True)
+    st.markdown("<left><p>One of the things I enjoy in my free time is photography. Although I love photography, I enjoy the editing aspect more! This is why I haven't actually upgrade from shooting on my phone yet. All photos captured on iPhone 13 Pro. Edited on Lightroom / Photomator. Unfortunately these photos can't be displayed in full resolution because they'd take too much memory. But please, hope you enjoy what I can display here!</p></left>", unsafe_allow_html=True)
     selected = som.option_menu(
         menu_title=None,
         options=["Landscapes", "Miscellaneous", "Bumi"],
