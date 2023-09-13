@@ -143,149 +143,150 @@ if selected == "Projects":
     st.markdown("<center><p style='font-size: 12px;'>I've been able to work on a variety of interesting projects thus far. Each project presented its own unqiue challenges and required me to learn new skills and technologoies. I've listed a few of them below! I'm proud of the work I've done on these projects and I'm always looking for new opportunities to apply my skills and knowledge to solve interesting problems!</p></center>", unsafe_allow_html=True)
     st.markdown("<center><p style='font-size: 12px;'>Like aforementioned, I'm very passionate about the more abstract side of programming: like data science and machine learning. Recently, I've picked up a huge interest in generative AI, namely transformers and diffusers. As such, you'll find that a lot of my projects are geared towards these interests. </p></center>", unsafe_allow_html=True)
     st.markdown("<center><p style='font-size: 12px;'>So please, check out some of my projects below. Click on any title to expand it and feel free to check out the demos, repositories, and play with some of them! </p></center>", unsafe_allow_html=True)
-                
-    # project 1
-    with st.expander("FIFA 2022 World Cup Simulator - Using Machine Learning to predict the winner of the 2022 FIFA World Cup."):
-        st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>The predictor model used is trained on a dataset (from kaggle) of all of football's historical international matches. We weighted the training data based on recency. The algorithm utilizes the random forest classifier, a series of interconnected decision trees for training. Additionally, the predicotr relies on a 1000x monte carlo method to incorporate randomness. With all these features, we created probabilities for each team in every fixture. In summary, the model predicted ~60% of games properly and had Brazil beating Belgium in the final to win the World Cup. </p>", unsafe_allow_html=True)
-        
-        st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Pandas, Scikit-Learn, Matplotlib, Numpy, Jupyter Notebook</p>", unsafe_allow_html=True)
 
-        wc_photo1 = Image.open(project_screenshots / "worldcup" / "wcpredictor1.png")
-        st.image(wc_photo1, width=600, caption="An example of the monte carlo sim being run on a fixture")
+    with st.spinner("Loading projects - bear with me, I'm only on the free tier of my deployment service lol"):        
+        # project 1
+        with st.expander("FIFA 2022 World Cup Simulator - Using Machine Learning to predict the winner of the 2022 FIFA World Cup."):
+            st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>The predictor model used is trained on a dataset (from kaggle) of all of football's historical international matches. We weighted the training data based on recency. The algorithm utilizes the random forest classifier, a series of interconnected decision trees for training. Additionally, the predicotr relies on a 1000x monte carlo method to incorporate randomness. With all these features, we created probabilities for each team in every fixture. In summary, the model predicted ~60% of games properly and had Brazil beating Belgium in the final to win the World Cup. </p>", unsafe_allow_html=True)
+            
+            st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Pandas, Scikit-Learn, Matplotlib, Numpy, Jupyter Notebook</p>", unsafe_allow_html=True)
 
-        st.write('')
-        
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/AggieSportsAnalytics/WorldCupPredictor',), use_container_width=True, key="1")
+            wc_photo1 = Image.open(project_screenshots / "worldcup" / "wcpredictor1.png")
+            st.image(wc_photo1, width=600, caption="An example of the monte carlo sim being run on a fixture")
 
-
-    # project 2
-    with st.expander("Penalty Kick Encroachment Tracker - An automated way to track encroachment during penalty kicks."):
-        st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>During soccer penalty kicks, there are two basic rules: the keeper cannot move off of his/her line and the non-penalty taker players musn't enter the box until the penalty taker kicks the ball. Referees regularly watch for the former, but the latter oftentimes goes unnoticed. This problem is the inspiration for this project. Such an autonomous tool could create a more authentic refereeing experience, also eliminating human error. This project utilizes computer vision to provide real-time player tracking (via You Only Look Once object detection/segmentation) and penalty box detection (via OpenCV contours and hough lines). Once everything is detected, an algorithm is employed verifying that the ball is kicked before any player enters the penalty box.</p>", unsafe_allow_html=True)
-        
-        st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Numpy, OpenCV, YOLOv8, YOLO Segmentation, Jupyter Notebook</p>", unsafe_allow_html=True)
-
-        pen_photo1 = Image.open(project_screenshots / "penaltykick" / "pen1.png")
-        pen_photo2 = Image.open(project_screenshots / "penaltykick" / "pen2.png")
-        pen_photo3 = Image.open(project_screenshots / "penaltykick" / "pen3.png")
-        pen_photo4 = Image.open(project_screenshots / "penaltykick" / "pen4.png")
-
-        col1, col2 = st.columns(2)
-        with col1:
-            st.image(pen_photo1, width=600, caption="Starting video", use_column_width=True)
-            st.image(pen_photo3, width=600, caption="Applying finer player tracking (segmentation) and team color detection (rgb color above head)", use_column_width=True)
-        with col2:
-            st.image(pen_photo2, width=600, caption="Applying player tracking", use_column_width=True)
-            st.image(pen_photo4, width=600, caption="Applying box detection", use_column_width=True)
-
-        st.write('')
-        
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/AggieSportsAnalytics/PenaltyEncroachment',), use_container_width=True, key="2")
-
-    # project 3
-    with st.expander("Analyzing patient wait times in infusion center ABC - performing data cleanup of a dataset to analyze patient wait times and draw conclusions for customer improvement in an infusion center."):
-        st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Infusion center ABC has been struggling with ever increasing patient wait times. They've sent a dataset representing their patient journey. I performed ETL on this data, cleaning it and preparing it for analysis. Start and end data can be found in the repository. After doing so, I performed quantitative analysis on the final data and created a presentation about my findings and conclusions. This presentation is found on the Github repository and can also be downloaded below. </p>", unsafe_allow_html=True)
-        
-        st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Pandas, Matplotlib, Numpy, Seaborn, Jupyter Notebook</p>", unsafe_allow_html=True)
-
-        infusion_photo1 = Image.open(project_screenshots / "infusioncenter" / "graph1.png")
-        infusion_photo2 = Image.open(project_screenshots / "infusioncenter" / "graph2.png")
-        
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            st.image(infusion_photo1, width=600, caption="Patient wait times by day of week")
-        with col2:
-            st.image(infusion_photo2, width=522, caption="Patient wait times by hour of day")
-
-        st.markdown("<center><p style='font-size: 12px; color: darkgrey;'>Example of graphs I generated to help me perform statistical analysis</p>", unsafe_allow_html=True)
-
-        st.write('')
-
-        infusion_pdf = project_screenshots / "infusioncenter" / "QuantitativeAnalysisResultsPresentation.pdf"
-        
-        with open(infusion_pdf, "rb") as pdf_file:
-            infusion_PDFbyte = pdf_file.read()
-        
-        st.download_button(
-            label="Download Presentation",
-            data=infusion_PDFbyte,
-            file_name=infusion_pdf.name,
-            mime="application/octet-stream",
-            use_container_width=True
-        )        
-        
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/Infusion_Center_Analysis',), use_container_width=True, key="3")
-
-    # project 4
-    with st.expander("Poemy - Utilizing langchain and GPT-3.5 to create beautiful poems and haikus."):
-        st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Fine tuned for illustrious poetry, Poemy harnesses the power of GPT-3.5 to generate poems and haikus on any topic. By utilizing chain of thought reasoning, Poemy develops poems based on research from the web, and the haikus that Poemy creates utilize the prior web and poem generation. Check out Poemy on the website below. Or use the embedded app!</p>", unsafe_allow_html=True)
-        
-        st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, OpenAI, Langchain, Streamlit</p>", unsafe_allow_html=True)
-
-        iframe("https://mypoemy.streamlit.app/?embed=true", height=390, scrolling=True)
-
-        st.write('')
-
-        st.button('Check out Poemy on the Website!', on_click=open_page, args=('https://mypoemy.streamlit.app/',), use_container_width=True, key="7")
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/poemy',), use_container_width=True, key="4")
-
-    # project 5
-    with st.expander("Wikipedia Speedrun - A community website where users can compete the Wikipedia Speedrun game with themselves and with others."):
-        st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Wikipeia Speedrun is a game that challenges players to navigate from one Wikipedia Page to another in as little time as possible, while only traversing through the site using the links from one Wikipedia page to another. I built a website that generates a random starting and ending Wikipedia page for the player to speedrun. Each Wikipedia page is webscraped through Selenium, and the contents within the article are summarzed and displayed to the user using ChatGPT. This model is fine tuned to generate the most useful summaries for the player in the context of Wikipedia Speedrun - pointing out key facts such as location and time period. Additionally, the site contains a leaderbaord (soon to be connected to Redis) where players can compete and post their best times for certain 'courses'. This leaderboard dynamically updates, allowing players to compete and view each others results in real time. Additionally, the columns in the leaderboard can be sorted, letting players easily access the stats they want to see. Future functionality of the app includes generating pages based on certain topics (such as celebrities or landmarks) and an in built timer. </p>", unsafe_allow_html=True)
-        
-        st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, Python, Pandas, Selenium, Wikipedia API, OpenAI, Redis</p>", unsafe_allow_html=True)
+            st.write('')
+            
+            st.button('View Project on Github', on_click=open_page, args=('https://github.com/AggieSportsAnalytics/WorldCupPredictor',), use_container_width=True, key="1")
 
 
-        ws_photo1 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun1.png")
-        ws_photo2 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun2.png")
-        ws_photo3 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun3.png")
+        # project 2
+        with st.expander("Penalty Kick Encroachment Tracker - An automated way to track encroachment during penalty kicks."):
+            st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>During soccer penalty kicks, there are two basic rules: the keeper cannot move off of his/her line and the non-penalty taker players musn't enter the box until the penalty taker kicks the ball. Referees regularly watch for the former, but the latter oftentimes goes unnoticed. This problem is the inspiration for this project. Such an autonomous tool could create a more authentic refereeing experience, also eliminating human error. This project utilizes computer vision to provide real-time player tracking (via You Only Look Once object detection/segmentation) and penalty box detection (via OpenCV contours and hough lines). Once everything is detected, an algorithm is employed verifying that the ball is kicked before any player enters the penalty box.</p>", unsafe_allow_html=True)
+            
+            st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Numpy, OpenCV, YOLOv8, YOLO Segmentation, Jupyter Notebook</p>", unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.image(ws_photo1, width=600, caption="Homepage", use_column_width=True)
-        with col2:
-            st.image(ws_photo2, width=600, caption="Gameplay", use_column_width=True)
-        with col3:
-            st.image(ws_photo3, width=600, caption="Leaderboard", use_column_width=True)
+            pen_photo1 = Image.open(project_screenshots / "penaltykick" / "pen1.png")
+            pen_photo2 = Image.open(project_screenshots / "penaltykick" / "pen2.png")
+            pen_photo3 = Image.open(project_screenshots / "penaltykick" / "pen3.png")
+            pen_photo4 = Image.open(project_screenshots / "penaltykick" / "pen4.png")
 
-        # iframe("https://wikipedia-speedrun.onrender.com", height=600, scrolling=True)
+            col1, col2 = st.columns(2)
+            with col1:
+                st.image(pen_photo1, width=600, caption="Starting video", use_column_width=True)
+                st.image(pen_photo3, width=600, caption="Applying finer player tracking (segmentation) and team color detection (rgb color above head)", use_column_width=True)
+            with col2:
+                st.image(pen_photo2, width=600, caption="Applying player tracking", use_column_width=True)
+                st.image(pen_photo4, width=600, caption="Applying box detection", use_column_width=True)
 
-        st.write('')
-        
-        st.button('Check out Wikipedia Speedrun on the Website!', on_click=open_page, args=('https://mypoemy.streamlit.app/',), use_container_width=True, key="8")
-        st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/WikipediaSpeedrun',), use_container_width=True, key="5")
+            st.write('')
+            
+            st.button('View Project on Github', on_click=open_page, args=('https://github.com/AggieSportsAnalytics/PenaltyEncroachment',), use_container_width=True, key="2")
 
-    # project 6
-    with st.expander("CryptoCheck - A fullstack application complete with an interactive dashboard to track cryptocurrency prices/news and a feature-full bot that can trade for you using various market strategies."):
-        st.markdown('''<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 10px; color: lemonchiffon;'>This project is a work in progress!</p>''', unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 13px;'>Planned features</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>User login</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>Interactive and heavily customizable dashboard where users can quickly get the information THEY want</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>A crypto trading bot that can be customized to trade based on many trading strategies, such as scalping, arbitrage, mean reversion, etc...</p>", unsafe_allow_html=True)
-        
-        st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, JavaScript, React, PostgreSQL, Python, Numpy, Tensorflow, Scikit-learn, CoinbasePro API/Websocket, Binance API, Docker, Figma</p>", unsafe_allow_html=True)
+        # project 3
+        with st.expander("Analyzing patient wait times in infusion center ABC - performing data cleanup of a dataset to analyze patient wait times and draw conclusions for customer improvement in an infusion center."):
+            st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Infusion center ABC has been struggling with ever increasing patient wait times. They've sent a dataset representing their patient journey. I performed ETL on this data, cleaning it and preparing it for analysis. Start and end data can be found in the repository. After doing so, I performed quantitative analysis on the final data and created a presentation about my findings and conclusions. This presentation is found on the Github repository and can also be downloaded below. </p>", unsafe_allow_html=True)
+            
+            st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, Pandas, Matplotlib, Numpy, Seaborn, Jupyter Notebook</p>", unsafe_allow_html=True)
 
-        cc_main = Image.open(project_screenshots / "cryptocheck" / "CryptoCheck.png")
-        cc_light = Image.open(project_screenshots / "cryptocheck" / "CryptoCheckLight.png")
-        cc_dark = Image.open(project_screenshots / "cryptocheck" / "CryptoCheckDark.png")
+            infusion_photo1 = Image.open(project_screenshots / "infusioncenter" / "graph1.png")
+            infusion_photo2 = Image.open(project_screenshots / "infusioncenter" / "graph2.png")
+            
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                st.image(infusion_photo1, width=600, caption="Patient wait times by day of week")
+            with col2:
+                st.image(infusion_photo2, width=522, caption="Patient wait times by hour of day")
+
+            st.markdown("<center><p style='font-size: 12px; color: darkgrey;'>Example of graphs I generated to help me perform statistical analysis</p>", unsafe_allow_html=True)
+
+            st.write('')
+
+            infusion_pdf = project_screenshots / "infusioncenter" / "QuantitativeAnalysisResultsPresentation.pdf"
+            
+            with open(infusion_pdf, "rb") as pdf_file:
+                infusion_PDFbyte = pdf_file.read()
+            
+            st.download_button(
+                label="Download Presentation",
+                data=infusion_PDFbyte,
+                file_name=infusion_pdf.name,
+                mime="application/octet-stream",
+                use_container_width=True
+            )        
+            
+            st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/Infusion_Center_Analysis',), use_container_width=True, key="3")
+
+        # project 4
+        with st.expander("Poemy - Utilizing langchain and GPT-3.5 to create beautiful poems and haikus."):
+            st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Fine tuned for illustrious poetry, Poemy harnesses the power of GPT-3.5 to generate poems and haikus on any topic. By utilizing chain of thought reasoning, Poemy develops poems based on research from the web, and the haikus that Poemy creates utilize the prior web and poem generation. Check out Poemy on the website below. Or use the embedded app!</p>", unsafe_allow_html=True)
+            
+            st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Python, OpenAI, Langchain, Streamlit</p>", unsafe_allow_html=True)
+
+            iframe("https://mypoemy.streamlit.app/?embed=true", height=390, scrolling=True)
+
+            st.write('')
+
+            st.button('Check out Poemy on the Website!', on_click=open_page, args=('https://mypoemy.streamlit.app/',), use_container_width=True, key="7")
+            st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/poemy',), use_container_width=True, key="4")
+
+        # project 5
+        with st.expander("Wikipedia Speedrun - A community website where users can compete the Wikipedia Speedrun game with themselves and with others."):
+            st.markdown("<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 13px;'>Description</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Wikipeia Speedrun is a game that challenges players to navigate from one Wikipedia Page to another in as little time as possible, while only traversing through the site using the links from one Wikipedia page to another. I built a website that generates a random starting and ending Wikipedia page for the player to speedrun. Each Wikipedia page is webscraped through Selenium, and the contents within the article are summarzed and displayed to the user using ChatGPT. This model is fine tuned to generate the most useful summaries for the player in the context of Wikipedia Speedrun - pointing out key facts such as location and time period. Additionally, the site contains a leaderbaord (soon to be connected to Redis) where players can compete and post their best times for certain 'courses'. This leaderboard dynamically updates, allowing players to compete and view each others results in real time. Additionally, the columns in the leaderboard can be sorted, letting players easily access the stats they want to see. Future functionality of the app includes generating pages based on certain topics (such as celebrities or landmarks) and an in built timer. </p>", unsafe_allow_html=True)
+            
+            st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, Python, Pandas, Selenium, Wikipedia API, OpenAI, Redis</p>", unsafe_allow_html=True)
 
 
-        st.image(cc_main, width=600, use_column_width=True)
+            ws_photo1 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun1.png")
+            ws_photo2 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun2.png")
+            ws_photo3 = Image.open(project_screenshots / "wikipediaspeedrun" / "wikipediaspeedrun3.png")
 
-        st.write('')
-        
-        st.button('Track our Progress Here', on_click=open_page, args=('https://github.com/soumil101/cryptocheck',), use_container_width=True, key="6", help="Visit CryptoCheck on Github")
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.image(ws_photo1, width=600, caption="Homepage", use_column_width=True)
+            with col2:
+                st.image(ws_photo2, width=600, caption="Gameplay", use_column_width=True)
+            with col3:
+                st.image(ws_photo3, width=600, caption="Leaderboard", use_column_width=True)
+
+            # iframe("https://wikipedia-speedrun.onrender.com", height=600, scrolling=True)
+
+            st.write('')
+            
+            st.button('Check out Wikipedia Speedrun on the Website!', on_click=open_page, args=('https://mypoemy.streamlit.app/',), use_container_width=True, key="8")
+            st.button('View Project on Github', on_click=open_page, args=('https://github.com/soumil101/WikipediaSpeedrun',), use_container_width=True, key="5")
+
+        # project 6
+        with st.expander("CryptoCheck - A fullstack application complete with an interactive dashboard to track cryptocurrency prices/news and a feature-full bot that can trade for you using various market strategies."):
+            st.markdown('''<hr style='margin-bottom: 10px; padding: 0px;'><p style='font-size: 10px; color: lemonchiffon;'>This project is a work in progress!</p>''', unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 13px;'>Planned features</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>User login</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>Interactive and heavily customizable dashboard where users can quickly get the information THEY want</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>A crypto trading bot that can be customized to trade based on many trading strategies, such as scalping, arbitrage, mean reversion, etc...</p>", unsafe_allow_html=True)
+            
+            st.markdown("<p style='font-size: 13px;'>Technologies Used</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 12px; color: darkgrey;'>HTML, CSS, JavaScript, React, PostgreSQL, Python, Numpy, Tensorflow, Scikit-learn, CoinbasePro API/Websocket, Binance API, Docker, Figma</p>", unsafe_allow_html=True)
+
+            cc_main = Image.open(project_screenshots / "cryptocheck" / "CryptoCheck.png")
+            cc_light = Image.open(project_screenshots / "cryptocheck" / "CryptoCheckLight.png")
+            cc_dark = Image.open(project_screenshots / "cryptocheck" / "CryptoCheckDark.png")
+
+
+            st.image(cc_main, width=600, use_column_width=True)
+
+            st.write('')
+            
+            st.button('Track our Progress Here', on_click=open_page, args=('https://github.com/soumil101/cryptocheck',), use_container_width=True, key="6", help="Visit CryptoCheck on Github")
 
 if selected == "Photography":
     st.markdown("<center><h4>My Photo Gallery!</h4></center>", unsafe_allow_html=True)
@@ -302,13 +303,6 @@ if selected == "Photography":
             "nav-link-selected": {"color": "gray", "background-color": "#F5EFC4"},
         }
     )
-
-    # selected = st.selectbox(
-    #     label="Select a category",
-    #     options=["Landscapes", "Miscellaneous", "Bumi"],
-    #     index=0,
-    #     help="Choose a category to display",
-    # )
 
     if selected == "Landscapes":
         '''If you can't tell, I really love shooting the sky'''
